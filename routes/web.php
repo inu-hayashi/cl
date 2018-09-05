@@ -13,6 +13,7 @@ use App\Coping;
 use Illuminate\Http\Request;
 
 //リスト表示 
+// ('url','コントローラ名@メソッド名')
 Route::get('/', 'CopingsController@index');
 
 //登録処理

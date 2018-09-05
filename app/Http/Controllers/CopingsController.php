@@ -6,12 +6,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Coping;
 use Validator;
-// 認証機能
+// 認証モデルを使用する
 use Auth;
 
 
 class CopingsController extends Controller
-{
+{       
+        // コンストラクタ(このクラスが呼ばれたら最初に処理する)
          public function __construct()
     {
         // 認証機能を使う
@@ -21,7 +22,7 @@ class CopingsController extends Controller
     //リスト表示
     public function index()
     {
-        // ユーザーidから登録している情報を引き出す
+        // ログインユーザーの情報取得
          $copings = Coping::where('user_id',Auth::user()->id)
          // 新しい順に並べる
          ->orderBy('created_at', 'desc')
@@ -40,7 +41,7 @@ class CopingsController extends Controller
     //更新画面
     public function edit($copings_id)
     {
-     $copings = Coping::where('user_id',Auth::user()->id) -> find($copings_id);
+        $copings = Coping::where('user_id',Auth::user()->id) -> find($copings_id);
         return view('copingsedit', [
             'coping' => $copings
         ]);
@@ -50,11 +51,11 @@ class CopingsController extends Controller
     public function update(Request $request) {
         //バリデーション
         $validator = Validator::make($request->all(), [
-            // アイテムid
+            // アイテムid(必須)
             'id' => 'required',
-            // アイテム名
+            // アイテム名(必須、255字以内)
             'item_name' => 'required|max:255',
-            // 満足度
+            // 満足度(必須)
             'item_satisfaction' => 'required',
         ]);
         //バリデーション:エラー
@@ -67,6 +68,7 @@ class CopingsController extends Controller
                 ->withErrors($validator);
         }
         // モデルCopingに対して値を更新
+        // 「copingsテーブルのid値」と「findで指定したid値」の等しいレコードを取得
         $copings = Coping::find($request->id);
         $copings->item_name   = $request->item_name;
         $copings->item_satisfaction = $request->item_satisfaction;
@@ -75,6 +77,7 @@ class CopingsController extends Controller
     }
 
     //リストの登録
+    // Requestモデルを通して$requestに1レコードの値を受け取る
     public function store(Request $request) {
         //バリデーション
         $validator = Validator::make($request->all(), [
