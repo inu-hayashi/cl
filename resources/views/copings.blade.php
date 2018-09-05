@@ -102,7 +102,7 @@
     </div>
   </div>
   @endif
-  <!-- Book: 既に登録されてるリスト -->
+  <!-- 既に登録されてるリスト -->
   <div class="row">
     <div class="col-md-4 col-md-offset-4">
       {{ $copings->links()}}

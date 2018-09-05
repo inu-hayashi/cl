@@ -31,7 +31,7 @@ class CopingsController extends Controller
          $auths = Auth::user();
          // viewのcopings.blade.phpを表示
          return view('copings', [
-             // 第二引数はビューに使用するデータを配列で受け取る。
+             // 第二引数はビューに使用するデータを受け取る。
             // ビューで使用する変数名 => 値(変数/配列/オブジェクト)
             'copings' => $copings,
             'auths' => $auths
@@ -90,7 +90,7 @@ class CopingsController extends Controller
                     ->withInput()
                     ->withErrors($validator);
         }
-        // 本作成処理
+        // 作成処理
         // モデルCopingに対して値を代入し保存
         $copings = new Coping;
         $copings->user_id = Auth::user()->id;
