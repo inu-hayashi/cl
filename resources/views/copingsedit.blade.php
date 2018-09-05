@@ -15,7 +15,7 @@
           <h2 class="h4">リストを行ったあとの満足度</h2>
           <div class="d-block">
             <label>
-              <input type="radio" name="item_satisfaction" class="" value="◯"> ◯ はい</label>
+              <input type="radio" name="item_satisfaction" class="" value="◯"> ◯ よい</label>
           </div>
           <div class="d-block">
             <label>
@@ -24,7 +24,7 @@
           </div>
           <div class="d-block">
             <label>
-              <input type="radio" name="item_satisfaction" class="" value="✕"> ✕ いいえ
+              <input type="radio" name="item_satisfaction" class="" value="✕"> ✕ よくない
               </label>
           </div>
         </div>

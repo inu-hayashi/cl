@@ -55,7 +55,7 @@ class CopingsController extends Controller
             // アイテム名
             'item_name' => 'required|max:255',
             // 満足度
-            'item_satisfaction' => 'required|max:6',
+            'item_satisfaction' => 'required',
         ]);
         //バリデーション:エラー
         if ($validator->fails()) {
@@ -79,7 +79,7 @@ class CopingsController extends Controller
         //バリデーション
         $validator = Validator::make($request->all(), [
                 'item_name' => 'required|max:255',
-                // 'item_satisfaction' => 'required|max:6',
+                // 'item_satisfaction' => 'required',
         ]);
         //バリデーション:エラー
         if ($validator->fails()) {
