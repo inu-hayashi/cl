@@ -9,6 +9,7 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>{{ config('app.name', 'Laravel') }}</title>
   <!-- Scripts -->
+  <!-- asset内のjsフォルダから読み込み -->
   <script src="{{ asset('js/app.js') }}" defer></script>
   <!-- Fonts -->
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -69,6 +70,7 @@
       </div>
     </div>
     <main class="py-4">
+      <!-- 子レイアウトのcontent部分を配置 -->
       @yield('content')
     </main>
   </div>

@@ -12,7 +12,7 @@
 use App\Coping;
 use Illuminate\Http\Request;
 
-//リスト表示
+//リスト表示 
 Route::get('/', 'CopingsController@index');
 
 //登録処理
@@ -27,6 +27,8 @@ Route::post('/copings/update','CopingsController@update');
 //削除
 Route::delete('/coping/{coping}','CopingsController@destroy');
 
+// 認証処理
 Auth::routes();
 
+// 新規ユーザー登録後に表示する画面
 Route::get('/home', 'HomeController@index')->name('home');

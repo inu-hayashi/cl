@@ -1,9 +1,9 @@
+<!-- 親レイアウト layout/app.blade.phpの@yeild('content')内に展開 -->
 @extends('layouts.app') @section('content')
 <!-- Bootstrapの定形コード… -->
 <div class="panel-body container">
-  <!-- バリデーションエラーの表示 -->
+  <!-- バリデーション機能common/erroes.blade.phpを読み込み -->
   @include('common.errors')
-  <!-- バリデーションエラーの表示 -->
   <div href="#howto" class="bg-success p-2 mb-4 rounded" id="cop">
     <h2 class="text-white text-left h3"><span class="align-middle"><i class="far fa-caret-square-down"></i> 使い方 </span></h2>
   </div>
@@ -66,15 +66,17 @@
         <tbody class="">
           @foreach ($copings as $coping)
           <tr>
-            <!-- タイトル -->
+            <!-- タイトルを表示 -->
             <td class="">
               <div>{{ $coping->item_name }}</div>
             </td>
             <td class="">
+              <!-- 満足度を表示 -->
               <div>{{ $coping->item_satisfaction }}</div>
             </td>
             <!-- 更新ボタン -->
             <td class="">
+              <!-- id値パラメータ$coping->idを付与しルート定義copingedit/{copings}と一致させる -->
               <form action="{{ url('copingsedit/'.$coping->id) }}" method="POST">
                 {{ csrf_field() }}
                 <button type="submit" class="btn btn-primary">
@@ -85,7 +87,9 @@
             <!-- 削除ボタン -->
             <td class="">
               <form action="{{ url('coping/'.$coping->id) }}" method="POST">
-                {{ csrf_field() }} {{ method_field('DELETE') }}
+                {{ csrf_field() }}
+                <!-- deleteリクエストにする  -->
+                {{ method_field('DELETE') }}
                 <button type="submit" class="btn btn-danger">
                   <i class="fas fa-trash-alt"></i>
                 </button>
